@@ -1,3 +1,7 @@
+body{
+    height: 3000px;
+}
+
 .calendar-container{
     width: 100px;
 }
