@@ -3,5 +3,9 @@ body{
 }
 
 .calendar-container{
-    width: 100px;
+    max-width: 1100px;
+}
+
+#calendar {
+    max-width: 1100px;
 }
