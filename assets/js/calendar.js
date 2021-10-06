@@ -1,11 +1,15 @@
+<<<<<<< HEAD
 google.charts.load('current', {'packages':['corechart']});
 
 // var APIkey = "8ca77be93b8c15ee7b97c2c78186ba1507778311"
+=======
+>>>>>>> dev
 var APIkey = "5e61c0ce804e0035eb140605ede33a2083a7df59"
 var countries = JSON.parse(localStorage.getItem("countries"));
 var countryCodes = JSON.parse(localStorage.getItem("countryCodes"))
 var backBtn = $('#backBtn')
-var color = ['blue', 'red', 'green', 'orange']
+var color = ['#36528a', '#e36d6b', '#5fcb76', '#9567bf']
+// var color = ['blue', 'yellow', 'arctic blue', 'kayak blue']
 var legends = $('#legends')
 var countryID = []
 
@@ -30,6 +34,7 @@ function createCalendar(holidaysArray = []) {
             center: 'title',
             right: 'dayGridMonth,listMonth',
         },
+        fistDay: 1,
         // aspectRatio: 2, //1.3 default
         // height: '100%',
         events: holidaysArray,
@@ -45,10 +50,12 @@ function createCalendar(holidaysArray = []) {
 }
 
 async function getHolidaysAPI(Url, newColor = 'blue') {
-    var holidaysList = []
     const response = await fetch(Url);
     const data = await response.json();
+<<<<<<< HEAD
     // console.log(data)
+=======
+>>>>>>> dev
     for (let i = 0; i < data.response.holidays.length; i++) {
         if (data.response.holidays[i].type.includes("National holiday")) {
             var newHoliday = {
@@ -60,7 +67,6 @@ async function getHolidaysAPI(Url, newColor = 'blue') {
             calendar.addEvent(newHoliday)
         }
     }
-    return holidaysList
 }
 
 function addHolidaysByCountry(countries){
@@ -70,7 +76,7 @@ function addHolidaysByCountry(countries){
         getHolidaysAPI(newUrl, color[i])
         var newLegend = $('<li>');
         newLegend.text(countries[i]);
-        newLegend.attr('style', 'background-color: ' + color[i] + '; border-radius: 3px; color: white; padding: 2px; margin: 0 3px; position:relative; bottom: 10px')
+        newLegend.attr('style', 'background-color: ' + color[i] + '; border-radius: 3px; color: white; padding: 9px; margin: 0 3px; position:relative; bottom: 13px')
         legends.append(newLegend)
     }
 }
