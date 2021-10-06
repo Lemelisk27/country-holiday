@@ -3,6 +3,7 @@ var requestHolidaysURL = 'https://calendarific.com/api/v2/holidays?&api_key=' + 
 var holidaysList = [];
 var resultAPI;
 var countries = JSON.parse(localStorage.getItem("countries"));
+var countryCodes = JSON.parse(localStorage.getItem("countryCodes"))
 var backBtn = $('#backBtn')
 
 var events = [{
@@ -73,6 +74,9 @@ async function getHolidaysAPI(Url) {
 
 function addHolidaysByCountry(countries){
     for (let i = 0; i < countries.length; i++) {
+        var actualCountryCode = countryCodes[countries[i]]
+        console.log(actualCountryCode)
         // var newUrl = 'https://calendarific.com/api/v2/holidays?&api_key=' + APIkey + '&country=' + countries[i].
     }
 }
+addHolidaysByCountry(countries)
