@@ -8,6 +8,7 @@ const BTN_STYLE = "waves-effect waves-light btn-large";
 $("#add-country-form").on("submit", handleAddCountry);
 $("#add-country-btn").click(handleAddCountry);
 $("#countries-list").click(handleDeleteCountry);
+$("#submit-button").click(handleSubmitBtn);
 
 onLoad();
 
@@ -30,6 +31,10 @@ function getAPI() {
             localStorage.setItem("countryList", JSON.stringify(countryList));
             localStorage.setItem("countryCodes", JSON.stringify(countyCodes));
         })
+}
+
+function handleSubmitBtn() {
+    document.location.replace("./calendar.html");
 }
 
 // Method that handles the button click, or submit event for 
