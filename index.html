@@ -15,17 +15,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Google fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <!-- group css file -->
     <link rel="stylesheet" href="./assets/css/style.css" />
 
 </head>
 <!-- Body container -->
 
-<body class="max-width 992px #90caf9 blue lighten-3">
+<body id="homepage" class="max-width 992px">
 
     <!-- Header row -->
     <div class="row">
-        <header id="header" class="text-align left col s12 #1e88e5 blue darken-1">
+        <header id="header" class="col s12 center">
             <h3>Regional Holiday Calendar</h3>
         </header>
     </div>
@@ -35,28 +39,26 @@
     <div class="row">
         <form class="col s8">
             <div class="input-field">
-                <h3>Add Countries:</h3>
-                <div class="input-field">
+                <h4 id="list-text">Add Countries:</h4>
+                <div class="input-field col s8">
                     <input type="text" id="countryI" class="form-control autocomplete" placeholder="Find Country" />
                 </div>
-              </div>
-          </form>
-          <div class="col s4">
-              <div class="col s8">
-                  <a class="input-field waves-effect waves-light btn-large">Add Country</a>
-              </div>
-          </div>
-      </div>
+            </div>
+            <div class="col s4 valign-wrapper">
+                <a id="add-button" class="waves-effect waves-dark btn-large right">Add Country</a>
+            </div>
+        </form>
+    </div>
 
       <div class="row">
-          <div class="col s6">
-              <ul class="list-group">
+          <div class="col s8">
+              <ul id="list-text"class="list-group">
                   <li>Temp 1</li>
                   <li>Temp 2</li>
               </ul>
           </div>
-          <div class="col-s6">
-              <a class="waves-effect waves-light btn-large">Submit</a>
+          <div class="col-s8 row">
+              <a id="submit-button" class="waves-effect waves-dark btn-large">Submit</a>
           </div>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
