@@ -12,7 +12,6 @@ $("#add-country-btn").click(handleAddCountry);
 $("#countries-list").click(handleDeleteCountry);
 
 getAPI();
-getHolidaysAPI();
 
 function getAPI() {
     fetch(requestURL)
@@ -27,23 +26,6 @@ function getAPI() {
         })
 }
 
-// function to get Holidays from the API, by the moment working with non-dynamic URL
-function getHolidaysAPI() {
-    fetch(requestHolidaysURL)
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
-            for(let i = 0; i < data.response.holidays.length; i++){
-                var newHoliday = {
-                    title: data.response.holidays[i].name,
-                    start: data.response.holidays[i].datetime.iso
-                }
-                holidays.append(newHoliday)
-            }
-            console.log(data)
-        })
-}
 
 // Method that handles the button click, or submit event for 
 // when a user adds a new country to the list of countries

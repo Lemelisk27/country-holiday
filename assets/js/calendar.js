@@ -19,13 +19,11 @@ var events = [{
 }]
 
 // Main
-resultAPI = getHolidaysAPI()
-console.log(resultAPI)
-holidaysList.append( resultAPI)
-createCalendar()
+var calendar = createCalendar()
+getHolidaysAPI()
 
 // Event listener for back button
-backBtn.on('click', function(){
+backBtn.on('click', function () {
     console.log('click');
     document.location.replace('./index.html');
 })
@@ -51,23 +49,35 @@ function createCalendar(holidaysArray = []) {
         // }]
     })
     calendar.render()
+    return calendar
 }
 
-function getHolidaysAPI() {
-    fetch(requestHolidaysURL)
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
-            // resultAPI = data
-            // for(let i = 0; i < data.response.holidays.length; i++){
-            //     var newHoliday = {
-            //         title: data.response.holidays[i].name,
-            //         start: data.response.holidays[i].date.iso
-            //     }
-            //     // holidaysList.append(newHoliday)
-            // }
-            console.log(resultAPI)
-            return data
-        })
+async function getHolidaysAPI() {
+
+    var holidaysList = []
+    const response = await fetch(requestHolidaysURL);
+    const data = await response.json();
+    console.log(data)
+    for (let i = 0; i < data.response.holidays.length; i++) {
+        var newHoliday = {
+            title: data.response.holidays[i].name,
+            start: data.response.holidays[i].date.iso
+        }
+        calendar.addEvent(newHoliday)
+        // holidaysList.push(newHoliday)
+    }
+    return holidaysList
+
+    // function getHolidaysAPI() {
+    // fetch(requestHolidaysURL)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         for (let i = 0; i < data.response.holidays.length; i++) {
+    //             var newHoliday = {
+    //                 title: data.response.holidays[i].name,
+    //                 start: data.response.holidays[i].date.iso
+    //             }
+    //             holidaysList.push(newHoliday)
+    //         }
+    //     })
 }
