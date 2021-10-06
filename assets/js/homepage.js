@@ -3,7 +3,6 @@ var requestURL = "https://calendarific.com/api/v2/countries?&api_key=" + APIkey
 var requestHolidaysURL = 'https://calendarific.com/api/v2/holidays?&api_key=' + APIkey + '&country=US&year=2021'
 var countryList = {}
 var countyCodes = {}
-var holidays = []
 const BTN_STYLE = "waves-effect waves-light btn-large";
 
 // Adding Event Handlers
@@ -70,7 +69,7 @@ function handleDeleteCountry(e) {
     }
 }
 
-function renderCountriesList(countryName) {
+function renderCountriesList() {
     var list = document.getElementById("countries-list");
 
     // Before render, remove all children first
@@ -84,7 +83,7 @@ function renderCountriesList(countryName) {
     if (countries !== null) {
         for (let i = 0; i < countries.length; i++) {
             var newLi = $("<li>").html(countries[i]);
-            $(newLi).addClass(BTN_STYLE);
+            $(newLi).addClass(BTN_STYLE).addClass("add-btn");
             $("#countries-list").prepend(newLi);
         }
     }

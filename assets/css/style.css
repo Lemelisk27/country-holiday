@@ -19,10 +19,9 @@ body{
     border-bottom-width: 4px;
     border-bottom-style: solid;
     border-bottom-color: #CBA688;
-
 }
 
-#add-button {
+.add-btn {
     background-color: #1a252f;
     color: #efefef;
     margin-right: 25%;
@@ -31,12 +30,16 @@ body{
 
 }
 
+.add-btn:hover {
+    background-color: #1a252f;
+}
+
 #submit-button {
     background-color: #1a252f;
     color: #efefef;
     border-radius: 4px;
     font-family: 'Lato', sans-serif;
-
+    margin-left: 5px;;
 }
 
 #countryI {

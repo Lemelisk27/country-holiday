@@ -73,6 +73,6 @@ async function getHolidaysAPI(Url) {
 
 function addHolidaysByCountry(countries){
     for (let i = 0; i < countries.length; i++) {
-        var newUrl = 'https://calendarific.com/api/v2/holidays?&api_key=' + APIkey + '&country=' + countries.
+        // var newUrl = 'https://calendarific.com/api/v2/holidays?&api_key=' + APIkey + '&country=' + countries[i].
     }
 }
