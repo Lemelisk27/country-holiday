@@ -7,6 +7,15 @@ body{
     max-width: 1100px;
 }
 
+#countries-list {
+    display: flex;
+    flex-direction: column;
+}
+
+#countries-list li {
+    margin-bottom: 15px;
+}
+
 #calendar {
     max-width: 1100px;
 }
@@ -22,7 +31,7 @@ body{
 
 }
 
-#add-button {
+.add-btn {
     background-color: #1a252f;
     color: #efefef;
     margin-right: 25%;
@@ -31,12 +40,16 @@ body{
 
 }
 
+.add-btn:hover {
+    background-color: #1a252f;
+}
+
 #submit-button {
     background-color: #1a252f;
     color: #efefef;
     border-radius: 4px;
     font-family: 'Lato', sans-serif;
-
+    margin-left: 5px;;
 }
 
 #countryI {
