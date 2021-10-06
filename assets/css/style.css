@@ -70,4 +70,7 @@ body{
 
 }
 
-
+#legends {
+    display: flex;
+    flex-direction: row;
+}

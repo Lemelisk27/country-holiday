@@ -1,24 +1,9 @@
 var APIkey = "8ca77be93b8c15ee7b97c2c78186ba1507778311"
-var requestHolidaysURL = 'https://calendarific.com/api/v2/holidays?&api_key=' + APIkey + '&country=US&year=2021';
-var holidaysList = [];
-var resultAPI;
 var countries = JSON.parse(localStorage.getItem("countries"));
 var countryCodes = JSON.parse(localStorage.getItem("countryCodes"))
 var backBtn = $('#backBtn')
 var color = ['blue', 'red', 'green', 'orange']
-
-var events = [{
-    groupId: '999',
-    title: 'China Holiday',
-    start: '2021-10-04',
-    end: '2021-10-04'
-},
-{
-    groupId: '998',
-    title: 'USA Holiday',
-    start: '2021-10-04',
-    end: '2021-10-04'
-}]
+var legends = $('#legends')
 
 // Main
 var calendar = createCalendar()
@@ -38,9 +23,9 @@ function createCalendar(holidaysArray = []) {
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
-            right: 'dayGridMonth,listWeek',
+            right: 'dayGridMonth,listMonth',
         },
-        aspectRatio: 2, //1.3 default
+        // aspectRatio: 2, //1.3 default
         // height: '100%',
         events: holidaysArray,
         // eventExample: [{
@@ -54,7 +39,7 @@ function createCalendar(holidaysArray = []) {
     return calendar
 }
 
-async function getHolidaysAPI(Url, newColor = 'white') {
+async function getHolidaysAPI(Url, newColor = 'blue') {
     var holidaysList = []
     const response = await fetch(Url);
     const data = await response.json();
@@ -76,9 +61,11 @@ async function getHolidaysAPI(Url, newColor = 'white') {
 function addHolidaysByCountry(countries){
     for (let i = 0; i < countries.length; i++) {
         var actualCountryCode = countryCodes[countries[i]]
-        // console.log(actualCountryCode)
         var newUrl = 'https://calendarific.com/api/v2/holidays?&api_key=' + APIkey + '&country=' + actualCountryCode + '&year=2021'
-        console.log(newUrl)
         getHolidaysAPI(newUrl, color[i])
+        var newLegend = $('<li>');
+        newLegend.text(countries[i]);
+        newLegend.attr('style', 'background-color: ' + color[i] + '; border-radius: 3px; color: white; padding: 2px; margin: 0 3px; position:relative; bottom: 10px')
+        legends.append(newLegend)
     }
 }
