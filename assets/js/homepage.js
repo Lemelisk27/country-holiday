@@ -8,8 +8,14 @@ const BTN_STYLE = "waves-effect waves-light btn-large";
 $("#add-country-form").on("submit", handleAddCountry);
 $("#add-country-btn").click(handleAddCountry);
 $("#countries-list").click(handleDeleteCountry);
+$("#submit-button").click(handleSubmitBtn);
 
-getAPI()
+onLoad();
+
+function onLoad() {
+    getAPI();
+    renderCountriesList();
+}
 
 function getAPI() {
     fetch(requestURL)
@@ -21,7 +27,14 @@ function getAPI() {
                 countryList[data.response.countries[i].country_name] = null
                 countyCodes[data.response.countries[i].country_name] = data.response.countries[i]["iso-3166"]
             }
+
+            localStorage.setItem("countryList", JSON.stringify(countryList));
+            localStorage.setItem("countryCodes", JSON.stringify(countyCodes));
         })
+}
+
+function handleSubmitBtn() {
+    document.location.replace("./calendar.html");
 }
 
 // Method that handles the button click, or submit event for 
@@ -37,7 +50,7 @@ function handleAddCountry(e) {
     }
 
     // Making sure input isn't a duplicate
-    if(!countries.includes(countryName)) {
+    if(!countries.includes(countryName) && countries.length < 3 && countryName in countryList) {
         countries.push(countryName);
         localStorage.setItem("countries", JSON.stringify(countries));
         renderCountriesList();
@@ -67,7 +80,7 @@ function handleDeleteCountry(e) {
     }
 }
 
-function renderCountriesList(countryName) {
+function renderCountriesList() {
     var list = document.getElementById("countries-list");
 
     // Before render, remove all children first
@@ -81,7 +94,7 @@ function renderCountriesList(countryName) {
     if(countries !== null) {
         for(let i = 0; i < countries.length; i++) {
             var newLi = $("<li>").html(countries[i]);
-            $(newLi).addClass(BTN_STYLE);
+            $(newLi).addClass(BTN_STYLE).addClass("add-btn");
             $("#countries-list").prepend(newLi);
         }
     }

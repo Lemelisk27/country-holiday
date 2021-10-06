@@ -1,4 +1,11 @@
+var APIkey = "8ca77be93b8c15ee7b97c2c78186ba1507778311"
+var requestHolidaysURL = 'https://calendarific.com/api/v2/holidays?&api_key=' + APIkey + '&country=US&year=2021';
+var holidaysList = [];
+var resultAPI;
+var countries = JSON.parse(localStorage.getItem("countries"));
+var countryCodes = JSON.parse(localStorage.getItem("countryCodes"))
 var backBtn = $('#backBtn')
+var color = ['blue', 'red', 'green', 'orange']
 
 var events = [{
     groupId: '999',
@@ -13,12 +20,17 @@ var events = [{
     end: '2021-10-04'
 }]
 
-backBtn.on('click', function(){
+// Main
+var calendar = createCalendar()
+addHolidaysByCountry(countries)
+
+// Event listener for back button
+backBtn.on('click', function () {
     console.log('click');
     document.location.replace('./index.html');
-    // add acctiong of going back
 })
 
+// function that creates calendar
 function createCalendar(holidaysArray = []) {
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -39,18 +51,34 @@ function createCalendar(holidaysArray = []) {
         // }]
     })
     calendar.render()
+    return calendar
 }
 
-function createEvents() {
-    // Must return an array of JSON [{},{}...]
-    // var arrayOfEvents = []
-    // Into the JSON it can have the keys: 
-    // groupId: '###' numbers, don't know what it does yet, its optional. Don't include by the moment. Maybe can be useful to change color to events depending on country
-    // title: 'Title of the holiday'
-    // start: 'YYYY-MM-DD'
-    // end: 'YYYY-MM-DD', optional, can be another day
-    // arrayOfEvents.append(JSON)
-    // return arrayOfEvents -> createCalendar's parameter
+async function getHolidaysAPI(Url, newColor = 'white') {
+    var holidaysList = []
+    const response = await fetch(Url);
+    const data = await response.json();
+    console.log(data)
+    for (let i = 0; i < data.response.holidays.length; i++) {
+        if (data.response.holidays[i].type.includes("National holiday")) {
+            var newHoliday = {
+                title: data.response.holidays[i].name,
+                start: data.response.holidays[i].date.iso,
+                 color: newColor,     // an option!
+                 textColor: 'white' // an option!
+            }
+            calendar.addEvent(newHoliday)
+        }
+    }
+    return holidaysList
 }
 
-createCalendar(events)
+function addHolidaysByCountry(countries){
+    for (let i = 0; i < countries.length; i++) {
+        var actualCountryCode = countryCodes[countries[i]]
+        // console.log(actualCountryCode)
+        var newUrl = 'https://calendarific.com/api/v2/holidays?&api_key=' + APIkey + '&country=' + actualCountryCode + '&year=2021'
+        console.log(newUrl)
+        getHolidaysAPI(newUrl, color[i])
+    }
+}
