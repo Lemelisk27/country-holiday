@@ -5,6 +5,7 @@ var resultAPI;
 var countries = JSON.parse(localStorage.getItem("countries"));
 var countryCodes = JSON.parse(localStorage.getItem("countryCodes"))
 var backBtn = $('#backBtn')
+var color = ['blue', 'red', 'green', 'orange']
 
 var events = [{
     groupId: '999',
@@ -20,8 +21,8 @@ var events = [{
 }]
 
 // Main
-// var calendar = createCalendar()
-// getHolidaysAPI()
+var calendar = createCalendar()
+addHolidaysByCountry(countries)
 
 // Event listener for back button
 backBtn.on('click', function () {
@@ -53,7 +54,7 @@ function createCalendar(holidaysArray = []) {
     return calendar
 }
 
-async function getHolidaysAPI(Url) {
+async function getHolidaysAPI(Url, newColor = 'white') {
     var holidaysList = []
     const response = await fetch(Url);
     const data = await response.json();
@@ -62,9 +63,9 @@ async function getHolidaysAPI(Url) {
         if (data.response.holidays[i].type.includes("National holiday")) {
             var newHoliday = {
                 title: data.response.holidays[i].name,
-                start: data.response.holidays[i].date.iso
-                // color: 'black',     // an option!
-                // textColor: 'yellow' // an option!
+                start: data.response.holidays[i].date.iso,
+                 color: newColor,     // an option!
+                 textColor: 'white' // an option!
             }
             calendar.addEvent(newHoliday)
         }
@@ -75,8 +76,9 @@ async function getHolidaysAPI(Url) {
 function addHolidaysByCountry(countries){
     for (let i = 0; i < countries.length; i++) {
         var actualCountryCode = countryCodes[countries[i]]
-        console.log(actualCountryCode)
-        // var newUrl = 'https://calendarific.com/api/v2/holidays?&api_key=' + APIkey + '&country=' + countries[i].
+        // console.log(actualCountryCode)
+        var newUrl = 'https://calendarific.com/api/v2/holidays?&api_key=' + APIkey + '&country=' + actualCountryCode + '&year=2021'
+        console.log(newUrl)
+        getHolidaysAPI(newUrl, color[i])
     }
 }
-addHolidaysByCountry(countries)
