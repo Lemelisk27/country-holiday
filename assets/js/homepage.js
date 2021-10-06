@@ -22,6 +22,9 @@ function getAPI() {
                 countryList[data.response.countries[i].country_name] = null
                 countyCodes[data.response.countries[i].country_name] = data.response.countries[i]["iso-3166"]
             }
+
+            localStorage.setItem("countryList", JSON.stringify(countryList));
+            localStorage.setItem("countryCodes", JSON.stringify(countyCodes));
         })
 }
 
