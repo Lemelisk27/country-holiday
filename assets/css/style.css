@@ -23,8 +23,8 @@ body{
 }
 
 #add-button {
-    background-color: #efefef;
-    color: #1a252f;
+    background-color: #1a252f;
+    color: #efefef;
     margin-right: 25%;
     border-radius: 4px;
     font-family: 'Lato', sans-serif;
@@ -32,8 +32,8 @@ body{
 }
 
 #submit-button {
-    background-color: #efefef;
-    color: #1a252f;
+    background-color: #1a252f;
+    color: #efefef;
     border-radius: 4px;
     font-family: 'Lato', sans-serif;
 
@@ -49,11 +49,11 @@ body{
 }
 
 #homepage {
-    background-color: #2C3E50;
+    background-color: #efefef;
 }
 
 #list-text {
-    color: #efefef; 
+    color: #1a252f;
 
 }
 
