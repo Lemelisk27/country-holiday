@@ -2,7 +2,7 @@ var APIkey = "8ca77be93b8c15ee7b97c2c78186ba1507778311"
 var requestHolidaysURL = 'https://calendarific.com/api/v2/holidays?&api_key=' + APIkey + '&country=US&year=2021';
 var holidaysList = [];
 var resultAPI;
-
+var countries = JSON.parse(localStorage.getItem("countries"));
 var backBtn = $('#backBtn')
 
 var events = [{
@@ -19,8 +19,8 @@ var events = [{
 }]
 
 // Main
-var calendar = createCalendar()
-getHolidaysAPI()
+// var calendar = createCalendar()
+// getHolidaysAPI()
 
 // Event listener for back button
 backBtn.on('click', function () {
@@ -52,32 +52,27 @@ function createCalendar(holidaysArray = []) {
     return calendar
 }
 
-async function getHolidaysAPI() {
-
+async function getHolidaysAPI(Url) {
     var holidaysList = []
-    const response = await fetch(requestHolidaysURL);
+    const response = await fetch(Url);
     const data = await response.json();
     console.log(data)
     for (let i = 0; i < data.response.holidays.length; i++) {
-        var newHoliday = {
-            title: data.response.holidays[i].name,
-            start: data.response.holidays[i].date.iso
+        if (data.response.holidays[i].type.includes("National holiday")) {
+            var newHoliday = {
+                title: data.response.holidays[i].name,
+                start: data.response.holidays[i].date.iso
+                // color: 'black',     // an option!
+                // textColor: 'yellow' // an option!
+            }
+            calendar.addEvent(newHoliday)
         }
-        calendar.addEvent(newHoliday)
-        // holidaysList.push(newHoliday)
     }
     return holidaysList
+}
 
-    // function getHolidaysAPI() {
-    // fetch(requestHolidaysURL)
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         for (let i = 0; i < data.response.holidays.length; i++) {
-    //             var newHoliday = {
-    //                 title: data.response.holidays[i].name,
-    //                 start: data.response.holidays[i].date.iso
-    //             }
-    //             holidaysList.push(newHoliday)
-    //         }
-    //     })
+function addHolidaysByCountry(countries){
+    for (let i = 0; i < countries.length; i++) {
+        var newUrl = 'https://calendarific.com/api/v2/holidays?&api_key=' + APIkey + '&country=' + countries.
+    }
 }
