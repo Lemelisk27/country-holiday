@@ -37,7 +37,7 @@
 
   <!-- Add Countries Section -->
     <div class="row">
-        <form class="col s8">
+        <form class="col s8" id="add-country-form">
             <div class="input-field">
                 <h4 id="list-text">Add Countries:</h4>
                 <div class="input-field col s8">
@@ -56,6 +56,18 @@
                   <li>Temp 1</li>
                   <li>Temp 2</li>
               </ul>
+             </div>
+          </form>
+          <div class="col s4">
+              <div class="col s8">
+                  <a class="input-field waves-effect waves-light btn-large" id="add-country-btn">Add Country</a>
+              </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col s6">
+              <ul class="list-group" id="countries-list"></ul>
           </div>
           <div class="col-s8 row">
               <a id="submit-button" class="waves-effect waves-dark btn-large">Submit</a>
