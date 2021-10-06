@@ -1,3 +1,8 @@
+var APIkey = "8ca77be93b8c15ee7b97c2c78186ba1507778311"
+var requestHolidaysURL = 'https://calendarific.com/api/v2/holidays?&api_key=' + APIkey + '&country=US&year=2021';
+var holidaysList = [];
+var resultAPI;
+
 var backBtn = $('#backBtn')
 
 var events = [{
@@ -13,12 +18,19 @@ var events = [{
     end: '2021-10-04'
 }]
 
+// Main
+resultAPI = getHolidaysAPI()
+console.log(resultAPI)
+holidaysList.append( resultAPI)
+createCalendar()
+
+// Event listener for back button
 backBtn.on('click', function(){
     console.log('click');
     document.location.replace('./index.html');
-    // add acctiong of going back
 })
 
+// function that creates calendar
 function createCalendar(holidaysArray = []) {
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -41,16 +53,21 @@ function createCalendar(holidaysArray = []) {
     calendar.render()
 }
 
-function createEvents() {
-    // Must return an array of JSON [{},{}...]
-    // var arrayOfEvents = []
-    // Into the JSON it can have the keys: 
-    // groupId: '###' numbers, don't know what it does yet, its optional. Don't include by the moment. Maybe can be useful to change color to events depending on country
-    // title: 'Title of the holiday'
-    // start: 'YYYY-MM-DD'
-    // end: 'YYYY-MM-DD', optional, can be another day
-    // arrayOfEvents.append(JSON)
-    // return arrayOfEvents -> createCalendar's parameter
+function getHolidaysAPI() {
+    fetch(requestHolidaysURL)
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            // resultAPI = data
+            // for(let i = 0; i < data.response.holidays.length; i++){
+            //     var newHoliday = {
+            //         title: data.response.holidays[i].name,
+            //         start: data.response.holidays[i].date.iso
+            //     }
+            //     // holidaysList.append(newHoliday)
+            // }
+            console.log(resultAPI)
+            return data
+        })
 }
-
-createCalendar(events)
