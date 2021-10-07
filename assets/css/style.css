@@ -34,7 +34,7 @@ body{
 #hero {
     height: 400px;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     background-image: url("../../assets/images/hero.png");
     background-size: cover;
     background-position: center;
@@ -89,9 +89,6 @@ body{
     animation-iteration-count: infinite;
 }
 
-<<<<<<< HEAD
-
-=======
 #legends {
     display: flex;
     flex-direction: row;
@@ -115,4 +112,3 @@ body{
     background-color: #1a252f;
     height: 100vh;
 }
->>>>>>> dev
