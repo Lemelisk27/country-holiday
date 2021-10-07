@@ -46,32 +46,30 @@ function handleAddCountry(e) {
 
     // Getting local storage
     var countries = JSON.parse(localStorage.getItem("countries"));
-    if(countries === null) {
+    if (countries === null) {
         countries = [];
     }
 
     // Making sure input isn't a duplicate
-    if(!countries.includes(countryName) 
-        && countries.length < 3 
-        && countryName in countryList) {
+    if (!countries.includes(countryName) && countries.length < 3 && countryName in countryList) {
         countries.push(countryName);
         localStorage.setItem("countries", JSON.stringify(countries));
         renderCountriesList();
-    } 
+    }
 
     // Clear search bar
-    $("#countryI").val(""); 
+    $("#countryI").val("");
 }
 
 // Method that deletes a country from the list of countries a user has chosen
 function handleDeleteCountry(e) {
     var countryName = e.target.textContent;
-    
+
     // Getting local storage, and removing from local storage
     var countries = JSON.parse(localStorage.getItem("countries"));
-    if(countries !== null) {
-        for(let i = 0; i < countries.length; i++) {
-            if(countries[i].toLowerCase() === countryName.toLowerCase()) {
+    if (countries !== null) {
+        for (let i = 0; i < countries.length; i++) {
+            if (countries[i].toLowerCase() === countryName.toLowerCase()) {
                 countries.splice(i, 1);
                 localStorage.setItem("countries", JSON.stringify(countries));
                 break;
@@ -87,15 +85,15 @@ function renderCountriesList() {
     var list = document.getElementById("countries-list");
 
     // Before render, remove all children first
-    while(list.firstChild) {
+    while (list.firstChild) {
         list.removeChild(list.firstChild);
     }
 
     var countries = JSON.parse(localStorage.getItem("countries"));
 
     // Create the new li elements
-    if(countries !== null) {
-        for(let i = 0; i < countries.length; i++) {
+    if (countries !== null) {
+        for (let i = 0; i < countries.length; i++) {
             var newLi = $("<li>").html(countries[i]);
             $(newLi).addClass(BTN_STYLE).addClass("add-btn");
             $("#countries-list").prepend(newLi);
@@ -103,26 +101,11 @@ function renderCountriesList() {
     }
 }
 
-// Method that uppercases the first letter of each word
-function uppercaseFirstLetter(word) {
-    var result = "";
 
-    if(word.length === 0) {
-        return result;
-    }
+$(document).ready(function () {
 
-    var words = word.split(" ");
-
-    for(let i = 0; i < words.length; i++) {
-        result += words[i][0].toUpperCase() + (words[i].substr(1)).toLowerCase() + " ";
-    }
-
-    return result.slice(0, result.length - 1);
-}
-
-$(document).ready(function(){
     $('input.autocomplete').autocomplete({
-      data: countryList,
-      limit: 5,
+        data: countryList,
+        limit: 5,
     });
-  });
+});
