@@ -24,12 +24,22 @@ body{
     background-color: #1a252f;
     color: white;
     font-family: 'Lato', sans-serif;
-    margin-bottom: 2%;
-    border-bottom-width: 4px;
+    border-bottom-width: 10px;
     border-bottom-style: solid;
     border-bottom-color: #CBA688;
+    text-align: center;
 
 }
+
+#hero {
+    height: 400px;
+    width: 100%;
+    margin-bottom: 5px;
+    background-image: url("../../assets/images/hero.png");
+    background-size: cover;
+    background-position: center;
+}
+
 
 .add-btn {
     background-color: #1a252f;
@@ -102,8 +112,11 @@ body{
     background-color: #1a252f;
     height: 100vh;
 }
+<<<<<<< HEAD
+=======
 
 #covidBanner {
     background-color: #1a252f;
     color: white;
 }
+>>>>>>> dev
