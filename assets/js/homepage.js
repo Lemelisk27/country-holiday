@@ -1,4 +1,5 @@
-var APIkey = "8ca77be93b8c15ee7b97c2c78186ba1507778311"
+// var APIkey = "8ca77be93b8c15ee7b97c2c78186ba1507778311"
+var APIkey = "5e61c0ce804e0035eb140605ede33a2083a7df59"
 var requestURL = "https://calendarific.com/api/v2/countries?&api_key=" + APIkey
 var countryList = {}
 var countyCodes = {}

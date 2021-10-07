@@ -12,4 +12,8 @@ THEN the new month is displayed.
   
 https://lemelisk27.github.io/country-holiday/  
   
-![Holiday Calender Screenshot](images/holiday-calendar.png)
+Homepage  
+![Holiday Homepage Screenshot](images/country-holiday-home.png)  
+  
+Calendar  
+![Holiday Calendar](images/country-holiday-cal.png)
