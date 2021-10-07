@@ -31,7 +31,7 @@ function createCalendar(holidaysArray = []) {
             center: 'title',
             right: 'dayGridMonth,listMonth',
         },
-        fistDay: 1,
+        firstDay: 1,
         // aspectRatio: 2, //1.3 default
         // height: '100%',
         events: holidaysArray,
