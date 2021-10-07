@@ -102,3 +102,8 @@ body{
     background-color: #1a252f;
     height: 100vh;
 }
+
+#covidBanner {
+    background-color: #1a252f;
+    color: white;
+}
