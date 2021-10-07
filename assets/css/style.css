@@ -3,10 +3,6 @@ body{
     font-family: 'Lato', sans-serif;
 }
 
-.calendar-container{
-    max-width: 1100px;
-}
-
 #countries-list {
     display: flex;
     flex-direction: column;
@@ -14,10 +10,6 @@ body{
 
 #countries-list li {
     margin-bottom: 15px;
-}
-
-#calendar {
-    max-width: 1100px;
 }
 
 #header {
@@ -39,7 +31,6 @@ body{
     background-size: cover;
     background-position: center;
 }
-
 
 .add-btn {
     background-color: #1a252f;
@@ -66,11 +57,6 @@ body{
     color: #2C3E50;
 }
 
-#backBtn {
-    background-color: #2C3E50;
-    color: white;
-}
-
 #homepage {
     background-color: #efefef;
 }
@@ -89,10 +75,6 @@ body{
     animation-iteration-count: infinite;
 }
 
-#legends {
-    display: flex;
-    flex-direction: row;
-}
 /* Shake Animation */
 @keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }
@@ -107,16 +89,3 @@ body{
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
   }
-
-#charts {
-    background-color: #1a252f;
-    height: 100vh;
-}
-<<<<<<< HEAD
-=======
-
-#covidBanner {
-    background-color: #1a252f;
-    color: white;
-}
->>>>>>> dev

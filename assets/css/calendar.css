@@ -1,0 +1,31 @@
+.row {
+    margin-bottom: 0;
+}
+
+.calendar-container{
+    max-width: 1100px;
+}
+
+#calendar {
+    max-width: 1100px;
+}
+
+#backBtn {
+    background-color: #2C3E50;
+    color: white;
+}
+
+#legends {
+    display: flex;
+    flex-direction: row;
+}
+
+#charts {
+    background-color: #1a252f;
+    height: 100vh;
+}
+
+#covidBanner {
+    background-color: #1a252f;
+    color: white;
+}
