@@ -6,7 +6,6 @@ var countries = JSON.parse(localStorage.getItem("countries"));
 var countryCodes = JSON.parse(localStorage.getItem("countryCodes"))
 var backBtn = $('#backBtn')
 var color = ['#36528a', '#5fcb76', '#9567bf', '#e36d6b']
-// var color = ['blue', 'yellow', 'arctic blue', 'kayak blue']
 var legends = $('#legends')
 var countryID = []
 
