@@ -42,7 +42,7 @@ function handleSubmitBtn() {
 // when a user adds a new country to the list of countries
 function handleAddCountry(e) {
     e.preventDefault();
-    var countryName = $("#countryI").val();
+    var countryName = uppercaseFirstLetter($("#countryI").val());
 
     // Getting local storage
     var countries = JSON.parse(localStorage.getItem("countries"));
@@ -51,7 +51,9 @@ function handleAddCountry(e) {
     }
 
     // Making sure input isn't a duplicate
-    if(!countries.includes(countryName) && countries.length < 3 && countryName in countryList) {
+    if(!countries.includes(countryName) 
+        && countries.length < 3 
+        && countryName in countryList) {
         countries.push(countryName);
         localStorage.setItem("countries", JSON.stringify(countries));
         renderCountriesList();
@@ -99,6 +101,23 @@ function renderCountriesList() {
             $("#countries-list").prepend(newLi);
         }
     }
+}
+
+// Method that uppercases the first letter of each word
+function uppercaseFirstLetter(word) {
+    var result = "";
+
+    if(word.length === 0) {
+        return result;
+    }
+
+    var words = word.split(" ");
+
+    for(let i = 0; i < words.length; i++) {
+        result += words[i][0].toUpperCase() + (words[i].substr(1)).toLowerCase() + " ";
+    }
+
+    return result.slice(0, result.length - 1);
 }
 
 $(document).ready(function(){
