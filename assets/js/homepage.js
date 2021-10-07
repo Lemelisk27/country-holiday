@@ -42,7 +42,7 @@ function handleSubmitBtn() {
 // when a user adds a new country to the list of countries
 function handleAddCountry(e) {
     e.preventDefault();
-    var countryName = $("#countryI").val();
+    var countryName = uppercaseFirstLetter($("#countryI").val());
 
     // Getting local storage
     var countries = JSON.parse(localStorage.getItem("countries"));
@@ -101,7 +101,9 @@ function renderCountriesList() {
     }
 }
 
+
 $(document).ready(function () {
+
     $('input.autocomplete').autocomplete({
         data: countryList,
         limit: 5,
