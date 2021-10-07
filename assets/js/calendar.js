@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 google.charts.load('current', {'packages':['corechart']});
 
 // var APIkey = "8ca77be93b8c15ee7b97c2c78186ba1507778311"
-=======
->>>>>>> dev
 var APIkey = "5e61c0ce804e0035eb140605ede33a2083a7df59"
 var countries = JSON.parse(localStorage.getItem("countries"));
 var countryCodes = JSON.parse(localStorage.getItem("countryCodes"))
@@ -34,7 +31,7 @@ function createCalendar(holidaysArray = []) {
             center: 'title',
             right: 'dayGridMonth,listMonth',
         },
-        fistDay: 1,
+        firstDay: 1,
         // aspectRatio: 2, //1.3 default
         // height: '100%',
         events: holidaysArray,
@@ -52,10 +49,6 @@ function createCalendar(holidaysArray = []) {
 async function getHolidaysAPI(Url, newColor = 'blue') {
     const response = await fetch(Url);
     const data = await response.json();
-<<<<<<< HEAD
-    // console.log(data)
-=======
->>>>>>> dev
     for (let i = 0; i < data.response.holidays.length; i++) {
         if (data.response.holidays[i].type.includes("National holiday")) {
             var newHoliday = {
@@ -82,7 +75,7 @@ function addHolidaysByCountry(countries){
 }
 
 for (let i = 0; i < countries.length; i++) {
-    countryID.push(countryCodes[countries[i]])    
+    countryID.push(countryCodes[countries[i]])   
 }
 
 function getData() {
@@ -114,6 +107,7 @@ function getData() {
         }
         if (dataArray.length === 1) {
             google.charts.setOnLoadCallback(firstChart);
+            $("#banner1").text(dataArray[0].countryName + " Confirmed Cases: " + dataArray[0].confirmed.toLocaleString('en-US'))
         }
         if (dataArray.length === 2) {
             google.charts.setOnLoadCallback(firstChart);
@@ -123,6 +117,9 @@ function getData() {
             google.charts.setOnLoadCallback(firstChart);
             google.charts.setOnLoadCallback(secondChart);
             google.charts.setOnLoadCallback(thirdChart);
+            $("#banner1").text(dataArray[0].countryName + " Confirmed Cases: " + dataArray[0].confirmed.toLocaleString('en-US'))
+            $("#banner2").text(dataArray[1].countryName + " Confirmed Cases: " + dataArray[1].confirmed.toLocaleString('en-US'))
+            $("#banner3").text(dataArray[2].countryName + " Confirmed Cases: " + dataArray[2].confirmed.toLocaleString('en-US'))
         }
         function firstChart() {
 
@@ -138,7 +135,7 @@ function getData() {
               pieStartAngle: 90,
               slices: 
                 {2: {offset: 0.2,
-                color: "green",
+                color: '#5fcb76',
                 },},
               legend: {
                 position: "left",
@@ -174,7 +171,7 @@ function getData() {
                 pieStartAngle: 90,
                 slices: 
                 {2: {offset: 0.2,
-                color: "red",
+                color: '#e36d6b',
                 },},
                 legend: {
                   position: "left",
@@ -210,7 +207,7 @@ function getData() {
                 pieStartAngle: 90,
                 slices: 
                 {2: {offset: 0.2,
-                color: "blue",
+                color: "#36528a",
                 },},
                 legend: {
                   position: "left",
