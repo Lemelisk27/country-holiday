@@ -101,9 +101,24 @@ function renderCountriesList() {
     }
 }
 
+// Method that uppercases the first letter of each word
+function uppercaseFirstLetter(word) {
+    var result = "";
+
+    if(word.length === 0) {
+        return result;
+    }
+
+    var words = word.split(" ");
+
+    for(let i = 0; i < words.length; i++) {
+        result += words[i][0].toUpperCase() + (words[i].substr(1)).toLowerCase() + " ";
+    }
+
+    return result.slice(0, result.length - 1);
+}
 
 $(document).ready(function () {
-
     $('input.autocomplete').autocomplete({
         data: countryList,
         limit: 5,
